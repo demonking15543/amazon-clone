@@ -415,6 +415,11 @@
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.2.0.tgz#f3933a44e365864f4dad5db94158106d511e8131"
   integrity sha512-sqKVVVOe5ivCaXDWivIJYVSaEgdQK9ul7a4Kity5Iw7u9+wBAPbX1RMSnLLmp7O4Vzj0WOWwMAJsTL00xwaNug==
 
+"@heroicons/react@v1":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@heroicons/react/-/react-1.0.6.tgz#35dd26987228b39ef2316db3b1245c42eb19e324"
+  integrity sha512-JJCXydOFWMDpCP4q13iEplA503MQO3xLoZiKum+955ZCtHINWnx26CUxVxxFQu/uLb4LW3ge15ZpzIkXKkJ8oQ==
+
 "@next/env@10.2.0":
   version "10.2.0"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-10.2.0.tgz#154dbce2efa3ad067ebd20b7d0aa9aed775e7c97"
