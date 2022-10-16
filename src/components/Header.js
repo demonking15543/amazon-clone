@@ -6,9 +6,10 @@ ShoppingCartIcon
  } from "@heroicons/react/outline";
 
  import { signIn, signOut, useSession } from "next-auth/client"
- console.log(process.env.GOOGLE_ID)
 
 function Header() {
+  const [session] = useSession();
+ 
   return (
     
     <header>
@@ -31,8 +32,9 @@ function Header() {
         <div className='text-white flex items-center 
         text-xs space-x-6 mx-6 whitespace-nowrap'>
           <div className='link'
-          onClick={signIn}>
-            <p>hello vijay rajput</p>
+          onClick={!session? signIn : signOut}>
+            <p>
+              { session? `Hello ${session.user.name}`:"Sign In"}</p>
             <p className="font-extrabold md:text-sm">Account & Lists</p>
           </div>
           <div className='link'>
