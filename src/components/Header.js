@@ -4,11 +4,13 @@ import {MenuIcon,
 SearchIcon,
 ShoppingCartIcon
  } from "@heroicons/react/outline";
+ import {  useRouter } from 'next/router'
 
  import { signIn, signOut, useSession } from "next-auth/client"
-
 function Header() {
   const [session] = useSession();
+  const router = useRouter();
+
  
   return (
     
@@ -21,7 +23,8 @@ function Header() {
           width={150}
           height={40}
           className="cursor-pointer" 
-          objectFit='contain'/>
+          objectFit='contain'
+          onClick={()=>router.push('/')}/>
         </div>
         {/* Search */}
         <div className='hidden sm:flex items-center h-10 rounded-md flex-grow cursor-pointer bg-yellow-400 hover:bg-yellow-500'>
@@ -41,7 +44,8 @@ function Header() {
             <p>Returns</p>
             <p className="font-extrabold md:text-sm">orders</p>
           </div>
-          <div className='relative link flex items-center'>
+          <div className='relative link flex items-center'
+          onClick={()=>router.push('/checkout')}>
             <span className='absolute  top-0 right-0 md:right-10 h-4 w-4 bg-yellow-400  text-center rounded-full text-black  font-bold'>4</span>
             <ShoppingCartIcon className='h-10'/>
             <p className="hidden md:inline font-extrabold md:text-sm mt-2
