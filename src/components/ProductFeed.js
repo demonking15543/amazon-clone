@@ -25,7 +25,6 @@ function ProductFeed({products}) {
         <Product key={product?.id} product={product}/>
     ))
 }
-         <h1 className='text-3xl border-b pb-4'>Your Shopping Basket</h1>
 
     </div>
   );
