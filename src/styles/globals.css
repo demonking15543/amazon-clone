@@ -15,4 +15,11 @@
          focus:ring-2 focus:ring-yellow-500
          active:from-yellow-500;
     }
+    .quantity{
+        @apply max-w-[30%] md:max-w-[15%];
+    }
+    .addAndRemoveButton{
+        @apply flex flex-col space-y-2 my-auto justify-self-end;
+
+    }
 }

@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { addToBasket, removeFromBasket } from '../slices/basketSlice';
 const MAX_RATING = 5
 const MIN_RATING =1
+
 function Product({product}) {
     
     const { title, price, description, category, image } = product;
@@ -23,7 +24,10 @@ function Product({product}) {
         const item = {
              ...product,
              hasPrime,
-             rating
+             rating,
+             "quantity":1,
+             "subtotal": parseFloat(product?.price),
+             
         }
         dispatch(addToBasket(item))
 
