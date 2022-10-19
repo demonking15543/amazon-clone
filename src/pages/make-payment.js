@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react'
 import { useSelector } from 'react-redux';
-import CheckoutProduct from '../components/CheckoutProduct';
+import CheckoutedProduct from '../components/CheckoutProduct';
 import Header from '../components/Header';
 import { selectItems, selectTotal } from '../slices/basketSlice';
 import Currency from 'react-currency-formatter';
@@ -20,9 +20,9 @@ function Checkout() {
 {/* Left section */}
 <div className='flex-grow m-5 shadow-sm'>
     <Image
-    src='https://links.papareact.com/ikj'
+    src='https://shorturl.at/kpwz3'
     width={1024}
-    height={250}
+    height={350}
     objectFit='contain'
     />
     <div className='flex flex-col p-5 space-y-10 bg-white'>
@@ -35,7 +35,7 @@ function Checkout() {
           </h1>
           {
             items.map((item)=>
-            <CheckoutProduct key={item.id} item={item}/>
+            <CheckoutedProduct key={item.id} item={item}/>
 
             )
           }
@@ -50,7 +50,7 @@ function Checkout() {
     <>
     <h2 className='whitespace-nowrap'>Subtotal ({items.length}) items: {' '}
     <span className='font-bold'>
-      <Currency currency='INR' quantity={total} />
+      <Currency currency='INR' quantity={total} /> 
       </span></h2>
       <button 
       disabled={!session}
