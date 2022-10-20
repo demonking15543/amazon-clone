@@ -1,22 +1,21 @@
 import { useSession } from 'next-auth/client'
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { createOrder } from '../../firebase'
+import { selectItems } from '../slices/basketSlice'
+import { useCallback } from "react";
+import useRazorpay from "react-razorpay";
 
 const defaultFields = {
     name: '' ,
     email:'',
     mobile:'',
-    address: '',
-    orderId:'',
-    productIds: [],
-    productQuantities:[],
-    productSubtoals:[],
-    total: ''
-
+    address: ''
 
 
 }
 function AddressForm() {
-
+    const items = useSelector(selectItems)
 
     const [session, loading] = useSession()
     defaultFields.name=session?.user?.name
@@ -30,11 +29,56 @@ function AddressForm() {
         const {name, value}  = event.target;
         setFormFields({...formFields, [name]:value})
      }
+     
 
      const submitHandle = (event) => {
         event.preventDefault();
+
+        createOrder(name, email, mobile, address, items)
         console.log({...formFields})
+        // handlePayment();
      }
+
+
+//  const createRazorpayOrder = () => {
+//      const createOrder = fetch('https://api.razorpay.com/v1/orders')
+
+//  }
+ 
+    //  const handlePayment = useCallback(() => {
+    //     const order =  createRazorpayOrder(params);
+    
+    //     const RazorpayOptions = {
+    //       key: process.env.Razorpay_PUBLIC_KEY,
+    //       amount: "30000",
+    //       currency: "INR",
+    //       name: "Acme Corp",
+    //       description: "Test Transaction",
+    //       image: "https://example.com/your_logo",
+    //       order_id: order.id,
+    //       handler: (res) => {
+    //         console.log(res);
+    //       },
+    //       prefill: {
+    //         name: "Piyush Garg",
+    //         email: "youremail@example.com",
+    //         contact: "9999999999",
+    //       },
+    //       notes: {
+    //         address: "Razorpay Corporate Office",
+    //       },
+    //       theme: {
+    //         color: "#3399cc",
+    //       },
+    //     };
+    
+    //     const rzpay = new Razorpay(RazorpayOptions);
+    //     rzpay.open();
+    //   }, [Razorpay]);
+      
+
+
+     
 
   return (
     <div className="w-full max-w-xs">
