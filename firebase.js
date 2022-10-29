@@ -1,5 +1,5 @@
 // import firebase from 'firebase';
-import { getFirestore, collection, Timestamp, getDoc, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, Timestamp, doc, addDoc, updateDoc  } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app'
 const firebaseConfig = {
     apiKey: "AIzaSyBt5sssarlWn7ZtOdCJZwSAvIKPFKJkaQA",
@@ -17,21 +17,50 @@ const firebaseConfig = {
 
  export const  createOrder = async (name, email, mobile, address, items) => {
   try {
-     await addDoc(collection(db, 'orders'), {
+     const order = await addDoc(collection(db, 'orders'), {
+
       name,
       email,
       mobile,
       address,
       "items":items,
+      "paymentOrderId":"",
+      "paymentId":"",
+      "status":"Pending",
+      
+
 
 
       created: Timestamp.now()
+      
 
     })
-    onclose()
+    return order
+
+    
   } catch (error) {
     console.error(error)
     
   };
 
  };
+
+
+ export const updateOrderDoc = async (orderId, paymentOrderId, paymentId, status) => {
+  try {
+    const docRef = doc(db, "orders", orderId)
+    await updateDoc(docRef, {
+      status,
+      paymentId,
+      paymentOrderId
+    })
+    return 
+    
+  } catch (error) {
+    console.log(error)
+    
+  }
+
+}
+
+
