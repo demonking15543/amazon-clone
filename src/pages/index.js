@@ -1,8 +1,19 @@
+import { useSession } from "next-auth/client";
 import Head from "next/head";
+import { useEffect } from "react";
+import { createUserDocFromAuth } from "../../firebase";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
 import ProductFeed from "../components/ProductFeed";
 export default function Home({products}) {
+  const [session, loading]=useSession()
+  useEffect(() => {
+    if(session){
+     createUserDocFromAuth(session?.user)
+    }
+ 
+ }, [session])
+
   return (
     <div className="bg-gray-100">
 

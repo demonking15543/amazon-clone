@@ -1,8 +1,8 @@
 import { useSession } from 'next-auth/client'
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { createOrder, updateOrderDoc } from '../../firebase'
-import { selectItems, selectTotal } from '../slices/basketSlice'
+import { selectItems, selectTotal, clearBasket } from '../slices/basketSlice'
 import { useCallback } from "react";
 import { useRouter } from 'next/router'
 
@@ -22,6 +22,8 @@ function AddressForm() {
 
     const router = useRouter()
     const [session, loading] = useSession()
+    const dispatch = useDispatch();
+    
     defaultFields.name=session?.user?.name
     defaultFields.email=session?.user?.email
 
@@ -72,7 +74,8 @@ function AddressForm() {
         image: "https://manuarora.in/logo.png",
         handler: function (response) {
           // Validate payment at server - using webhooks is a better idea.
-          updateOrderDoc(orderId, response.razorpay_payment_id, response.razorpay_order_id, "success");
+          updateOrderDoc(orderId, response?.razorpay_order_id, response?.razorpay_payment_id, "success");
+          dispatch(clearBasket())         
           router.push('/order-detail')
        
         },
@@ -89,7 +92,7 @@ function AddressForm() {
     const submitHandle =  async (event) => {
       event.preventDefault();
 
-      const order= await createOrder(name, email, mobile, address, items)
+      const order= await createOrder(session?.user?.email, name, email, mobile, address, items, total, "INR")
       makePayment(order.id)
    }
 

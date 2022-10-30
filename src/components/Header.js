@@ -1,18 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Image from "next/image";
 import {MenuIcon,
 SearchIcon,
 ShoppingCartIcon
  } from "@heroicons/react/outline";
  import {  useRouter } from 'next/router'
+ 
 
  import { signIn, signOut, useSession } from "next-auth/client"
 import { useSelector } from 'react-redux';
 import { selectItems } from '../slices/basketSlice';
+import { createUserDocFromAuth } from '../../firebase';
 function Header() {
-  const [session] = useSession();
+  const [session, loading] = useSession();
   const router = useRouter();
   const items = useSelector(selectItems)
+  
 
  
   return (
@@ -43,7 +46,7 @@ function Header() {
               { session? `Hello ${session.user.name}`:"Sign In"}</p>
             <p className="font-extrabold md:text-sm">Account & Lists</p>
           </div>
-          <div className='link'>
+          <div className='link' onClick={()=>router.push('/order-detail')}>
             <p>Returns</p>
             <p className="font-extrabold md:text-sm">orders</p>
           </div>
