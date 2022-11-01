@@ -1,6 +1,6 @@
 # Installation Steps
 
-Follow this link to visit this site [https://amazonclone-mu.vercel.app](amazonclone-mu.vercel.app)
+Follow this link to visit this site [https://amazonclone-mu.vercel.app](https://amazonclone-mu.vercel.app)
 
 ## Using npm
 
