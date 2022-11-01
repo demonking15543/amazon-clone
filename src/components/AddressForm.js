@@ -131,7 +131,8 @@ function AddressForm() {
       <input className="shadow appearance-none border 
       rounded w-full py-2 px-3 text-gray-700 leading-tight 
       focus:outline-none focus:shadow-outline" id="username" type="text" 
-      placeholder="Your FullName" value={name}
+      placeholder="Your FullName" 
+      value={name}
       name='name'
       onChange={handleChange}/>
     </div>
@@ -157,6 +158,7 @@ function AddressForm() {
       placeholder="Your mobile number" 
       name='mobile'
       onChange={handleChange}
+      value={mobile}
       required/>
     </div>
     <div className="mb-4">
@@ -170,6 +172,7 @@ function AddressForm() {
       placeholder="Please provide Your complete address" 
       name='address'
       onChange={handleChange}
+      value={address}
       required></textarea>
     </div>
     <div className="flex items-center justify-between">

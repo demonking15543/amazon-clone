@@ -56,25 +56,6 @@ function OrderDetail() {
 </div>
 
 
-{/* Right Section */}
-<div className="flex flex-col bg-white p-10 shadow-sm">
-{
-  items.length > 0 && (
-    <>
-    <h2 className='whitespace-nowrap'>Subtotal ({items.length}) items: {' '}
-    <span className='font-bold'>
-      <Currency currency='INR' quantity={total} />
-      </span></h2>
-      <button 
-      disabled={!session}
-      onClick={()=> session  && router.push('/make-payment')}
-      className={`button mt-2 ${!session && 'from-gray-300 to-gray-500 border-gray-200 text-gray-300 cursor-not-allowed'}`}>
-        {!session ? 'Sign In to checkout': 'Checkout'}
-      </button>
-    </>
-  )
-}
-</div>
         </main>
 
     </div>
