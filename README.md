@@ -1,6 +1,6 @@
 # Installation Steps
 
-
+Follow this link to visit this site [https://amazonclone-mu.vercel.app](https://amazonclone-mu.vercel.app)
 
 ## Using npm
 
@@ -16,5 +16,5 @@ Run commands
 
 Run commands 
 
-1) ```npm install 
+1) ```npm install uu
 ```
